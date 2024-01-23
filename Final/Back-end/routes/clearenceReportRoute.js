@@ -27,14 +27,6 @@ router.get("/", (req, res) => {
 })*/
 //Signup...............................................................
 router.route("/ADDClearance").post((req, res) => {
-  // const fullName =req.body.fullName;
-  // const studentId = req.body.studentId;
-  // const email =req.body.email;
-  // const contactNumber = req.body.contactNumber;
-  // const combination = req.body.combination;
-  // const password=req.body.password;
-  // const newStudent = new studentModel({fullName,studentId,email,contactNumber,combination,password});
-
   const { studentName, studentId, email,  combination, clearenceDescription, totalAmount } =
     req.body;
 
@@ -51,7 +43,7 @@ router.route("/ADDClearance").post((req, res) => {
 
   clearenceReport
     .create(newclearenceReport)
-    .then(() => res.json("User added"))
+    .then(() => res.json("Clearene report added"))
     .catch((err) => res.status(400).json("Error:" + err));
 });
 
