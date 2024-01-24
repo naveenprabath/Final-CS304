@@ -43,6 +43,12 @@ app.use('/academicStaff',academicStaffRouter);
 const clearenceReportRouter = require('./routes/clearenceReportRoute');
 app.use('/clearenceReport',clearenceReportRouter);
 
+const complainRouter = require('./routes/complainRoute');
+app.use('/complain',complainRouter);
+
+const slipManagementRouter = require('./routes/slipManagementRoute');
+app.use('/slipManagement',slipManagementRouter);
+
 
 //-----------------------------------------------------------
 app.listen(port, () => {

@@ -6,14 +6,14 @@ import Img1 from "../Images/logo.png";
 
 function LoginAlert() {
   const [show, setShow] = useState(false);
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loginError, setLoginError] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const handleClose = () => {
     setShow(false);
-    setUsername('');
+    setEmail('');
     setPassword('');
     setLoginError('');
   };
@@ -22,11 +22,20 @@ function LoginAlert() {
     setShow(true);
   };
 
-  const handleLogin = (e) => {
-    e.preventDefault();
 
-    
-    if (username === 'user' && password === 'password') {
+  const  handleLogin = () => {
+    const axiosConfig = {
+      method: "GET",
+      url: `${BASE_URL}student/Login`,
+      data: {
+        
+      
+        email,
+         
+        password,
+      },
+    };
+   if (email === 'email' && password === 'password') {
       // Successful login
       setIsLoggedIn(true);
       setLoginError('');
@@ -35,7 +44,24 @@ function LoginAlert() {
     } else {
       // Invalid credentials
       setIsLoggedIn(false);
-      setLoginError('Invalid username or password. Please try again.');
+      setLoginError('Invalid Email or password. Please try again.');
+    }
+  };
+  const handleLogin = (e) => {
+    e.preventDefault();
+    
+
+    
+    if (email === 'email' && password === 'password') {
+      // Successful login
+      setIsLoggedIn(true);
+      setLoginError('');
+      // Close the modal
+      handleClose();
+    } else {
+      // Invalid credentials
+      setIsLoggedIn(false);
+      setLoginError('Invalid Email or password. Please try again.');
     }
   };
 
@@ -59,13 +85,13 @@ function LoginAlert() {
           <Modal.Body>
             {loginError && <p className="text-danger">{loginError}</p>}
             <Form.Group controlId="username">
-              <Form.Label>Username or GSUTEMail</Form.Label>
+              <Form.Label> GSUTEMail</Form.Label>
               <Form.Control
                 type="text"
-                name="username"
-                placeholder="Enter your username"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
+                name="email"
+                placeholder="Enter your GSUTEMAIL"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </Form.Group>
 

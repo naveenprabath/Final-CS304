@@ -17,14 +17,15 @@ router.get("/", (req, res) => {
 // });
 
 //User login
-/*router.post('/pages/login',(req,res)=>{
+router.route('/login').post((req,res)=>{
     const {email,password} = req.body
-    const student = studnets.find((u)=>u.email === email);
-    if(!student ||studnet.password!==password){
+    const student = student.find((u)=>u.email === email);
+    if(!student ||student.password!==password){
         return res.status(401).json({error:'Invalid email or password'});
     }
-    res.status(200).json({message:'Login sucessful',user});
-})*/
+    res.status(200).json({message:'Login sucessful',student});
+})
+
 //Signup...............................................................
 router.route("/Signup").post((req, res) => {
   // const fullName =req.body.fullName;

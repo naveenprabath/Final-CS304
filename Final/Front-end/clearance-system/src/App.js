@@ -9,6 +9,8 @@ import AccademiStaffSignup from './Pages/AccademiStaffSignup';
 import NonAccademiStaffSignup from './Pages/NonAccademiStaffSignup';
 import ClearanceReport from './Pages/ClearanceReport';
 import StaffDashBoard from './Pages/StaffDashBoard';
+import AddClearance from './Pages/ADDClearance';
+import Complain from './Pages/Complain';
 
 function App(){
   return (
@@ -25,6 +27,9 @@ function App(){
         <Route exact path='/NonAccademiStaffSignup' element={<NonAccademiStaffSignup/>} />
         <Route exact path='/ClearanceReport' element={<ClearanceReport/>} />
         <Route exact path='/StaffDashBoard' element={<StaffDashBoard/>} />
+        <Route exact path='/ADDClearance' element={<AddClearance/>} />
+        <Route exact path='/Complain' element={<Complain/>} />
+        
         </Routes>
       </div>
     </Router>
