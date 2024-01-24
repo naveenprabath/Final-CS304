@@ -1,11 +1,14 @@
 const router = require("express").Router();
 let student = require("../models/student");
+const jwt = require("jwt-simple");
+const passport = require("passport");
+const studentController = require("../controllers/studentController");
 
 router.get("/", (req, res) => {
   student
     .find()
     .then((student) => res.json(student))
-    .catch((err) => res.status(400).json("Error:" + err));
+    .catch((then) => res.status(400).json("Error:" + then));
 });
 
 // //Create a new students
@@ -17,14 +20,22 @@ router.get("/", (req, res) => {
 // });
 
 //User login
-router.route('/login').post((req,res)=>{
-    const {email,password} = req.body
-    const student = student.find((u)=>u.email === email);
-    if(!student ||student.password!==password){
-        return res.status(401).json({error:'Invalid email or password'});
-    }
-    res.status(200).json({message:'Login sucessful',student});
-})
+// router.post("/login", async (req, res) => {
+//   const { email, password } = req.body;
+//   const studentresult = await student.find({ email: email });
+//   console.log(studentresult);
+//   if (!studentresult || studentresult.password != password) {
+//     res.status(401).json({ error: "Invalid email or password" });
+//   } else {
+//     res.status(200).json({ message: "Login sucessful", studentresult });
+//   }
+// });
+
+router.post(
+  "/login",
+  passport.authenticate("local", { session: false }),
+  studentController.login
+);
 
 //Signup...............................................................
 router.route("/Signup").post((req, res) => {
@@ -48,12 +59,12 @@ router.route("/Signup").post((req, res) => {
     password,
   };
 
-  console.log(newStudent)
+  console.log(newStudent);
 
   student
     .create(newStudent)
     .then(() => res.json("User added"))
-    .catch((err) => res.status(400).json("Error:" + err));
+    .catch((then) => res.status(400).json("Error:" + then));
 });
 
 module.exports = router;

@@ -1,17 +1,20 @@
 
 const student = require("../models/student")
-const config = require("../config.js")
+const config = require("../config/config")
 const jwt = require("jwt-simple");
 
+
 exports.login = function (req, res) {
-  User.findOne({ email: req.body.username }, (err, user) => {
-    if (err) {
+    console.log("ghgfhf");
+  student.findOne({ email: req.body.email }, (then, student) => {
+    if (then) {
       console.log("Error");
+      res.json({ then: then })
     } else {
-      var payload = { 
-        id: user.id, 
-        expire: Date.now() + 1000 * 60 * 60 * 24 * 7 
-      }
+        var payload = { 
+            password: student.password, 
+            expire: Date.now() + 1000 * 60 * 60 * 24 * 7 
+        }
 
       var token = jwt.encode(payload, config.jwtSecret)
 
@@ -20,25 +23,11 @@ exports.login = function (req, res) {
   });
 };
 
-exports.register = function (req, res) {
-  User.register(
-    new User({ 
-      email: req.body.email, 
-      username: req.body.username 
-    }), req.body.password, function (err, msg) {
-      if (err) {
-        res.send(err);
-      } else {
-        res.send({ message: "Successful" });
-      }
-    }
-  );
-};
 
 exports.profile = function(req, res) {
   res.json({
     message: 'You made it to the secured profile',
-    user: req.user,
+    student: req.student,
     token: req.query.secret_token
   })
 }

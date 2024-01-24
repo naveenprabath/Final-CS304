@@ -2,7 +2,7 @@
 var User = require("../models/student");
 var passport = require("passport");
 var passportJWT = require("passport-jwt");
-var config = require("../config.js");
+var config = require("../config/config");
 var ExtractJwt = passportJWT.ExtractJwt;
 var Strategy = passportJWT.Strategy;
 
@@ -13,13 +13,13 @@ var params = {
 
 module.exports = function() {
   var strategy = new Strategy(params, function(payload, done) {
-    User.findById(payload.id, function(err, user) {
-      if (err) {
+    User.findById(payload.id, function(then, student) {
+      if (then) {
         return done(new Error("UserNotFound"), null);
       } else if (payload.expire <= Date.now()) {
         return done(new Error("TokenExpired"), null);
       } else{
-        return done(null, user);
+        return done(null, student);
       }
     });
   });

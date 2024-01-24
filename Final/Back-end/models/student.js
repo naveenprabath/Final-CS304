@@ -5,8 +5,8 @@
 //onst isEmail = validator.isEmail; 
 
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
 const passportLocalMongoose = require('passport-local-mongoose');
+const Schema = mongoose.Schema;
 
 const studentSchema = new Schema({
     fullName:{
