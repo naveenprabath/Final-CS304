@@ -8,6 +8,9 @@ router.get("/", (req, res) => {
     .catch((err) => res.status(400).json("Error:" + err));
 });
 
+
+
+
 // //Create a new students
 // router.post('/pages',(req,res)=>{
 //     const {fullName,studentId,email,contactNumber,combination,password}=req.body;

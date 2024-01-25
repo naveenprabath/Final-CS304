@@ -1,10 +1,11 @@
-//const bcrypt = require('bcrypt');
+const bcrypt = require('bcrypt');
 //const hash = bcrypt.hash; 
 
 //const validator = require('validator');
 //onst isEmail = validator.isEmail; 
 
 const mongoose = require('mongoose');
+const passportLocalMongoose = require("passport-local-mongoose");
 const Schema = mongoose.Schema;
 
 const academicStaffSchema = new Schema({
@@ -20,7 +21,7 @@ const academicStaffSchema = new Schema({
         type:String,
         //unique:true,
         required:true
-       // validate:[isEmail,'invalid email']
+        //validate: [validator.isEmail,'invalid email']
     },
     contactNumber:{
         type:String,
@@ -46,6 +47,16 @@ const academicStaffSchema = new Schema({
 //     }
 //     next();
 // })
+
+academicStaffSchema.pre("save", async function (next) {
+    const academicStaff = this;
+    if (academicStaffSchema.isModified("password")) {
+      academicStaff.password = await bcrypt.hash(academicStaff.password, 10);
+    }
+    next();
+  });
+
+  academicStaffSchema.plugin(passportLocalMongoose);
 
 const academicStaff = mongoose.model('academicStaff',academicStaffSchema);
 module.exports = academicStaff;

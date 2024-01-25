@@ -1,4 +1,5 @@
 const User = require("../models/student");
+const User = require("../models/academicStaff")
 const passport = require("passport");
 const passportJWT = require("passport-jwt");
 const config = require("../config/config");

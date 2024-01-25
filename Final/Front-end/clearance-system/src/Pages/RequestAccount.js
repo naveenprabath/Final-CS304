@@ -13,7 +13,7 @@ import { faHome, faUserPlus, faSignInAlt, faCalendarAlt, faCreditCard, faHeadset
 import Login from "./Login";
 import Signup from "./Signup";
 import AccademiStaffSignup from "./AccademiStaffSignup";
-import NonAccademiStaffSignup from "./NonAccademiStaffSignup";
+import AccademicStaffLogin from "./AccademicStaffLogin";
 
 function RequestAccount() {
     const containerStyle = {
@@ -146,13 +146,13 @@ function RequestAccount() {
                 style={cardStyle}
               >
                 <Card.Body className="text-center">
-                  <Card.Title>NON ACCEDEMIC STAFF SIGNUP</Card.Title>
+                  <Card.Title> ACCEDEMIC STAFF LogIn</Card.Title>
                   <br/>
                   <Card.Text>
                           <FontAwesomeIcon icon={faUserPlus} style={{ fontSize: 120 }} />
                         </Card.Text>
                         <div className="p-2 ms-auto">
-                <NonAccademiStaffSignup />
+                <AccademicStaffLogin/>
               </div>
                   
                 </Card.Body>

@@ -13,6 +13,7 @@ import AddClearance from './Pages/ADDClearance';
 import Complain from './Pages/Complain';
 import {useState} from 'react';
 import ProtectRoute from './components/protectedRoute';
+import AccademicStaffLogin from './Pages/AccademicStaffLogin';
 
 function App(){
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -30,10 +31,11 @@ function App(){
         <Route exact path='/Signup' element={<Signup/>} />
         <Route exact path='/AccademiStaffSignup' element={<AccademiStaffSignup/>} />
         <Route exact path='/NonAccademiStaffSignup' element={<NonAccademiStaffSignup/>} />
-        <Route exact path='/ClearanceReport' element={<ProtectRoute><ClearanceReport/></ProtectRoute>} />
-        <Route exact path='/StaffDashBoard' element={<StaffDashBoard/>} />
+        <Route exact path='/ClearanceReport' element={<ProtectRoute to={"/Login"}><ClearanceReport/></ProtectRoute>} />
+        <Route exact path='/StaffDashBoard' element={ <ProtectRoute to={"/AccademicStaffLogin"}><StaffDashBoard/> </ProtectRoute>} />
         <Route exact path='/ADDClearance' element={<AddClearance/>} />
         <Route exact path='/Complain' element={<Complain/>} />
+        <Route exact path='/AccademicStaffLogin' element={ <AccademicStaffLogin/>} />
         
         </Routes>
       </div>

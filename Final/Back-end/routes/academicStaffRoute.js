@@ -1,12 +1,19 @@
 const router = require("express").Router();
-let academicStaff = require("../models/academicStaff");
+const academicStaff = require("../models/academicStaff");
+const jwt = require("jwt-simple");
+const passport = require("passport")
+const academicStaffController = require("../controllers/academicStaffController");
 
-router.get("/", (req, res) => {
-  academicStaff
-    .find()
-    .then((academicStaff) => res.json(academicStaff))
-    .catch((err) => res.status(400).json("Error:" + err));
+
+router.get("/", async (req, res) => {
+  try {
+    const academicStaff1 = await academicStaff.find();
+    res.json(academicStaff1);
+  } catch (error) {
+    res.status(400).json({ error: "Error retrieving students" });
+  }
 });
+
 
 
 
@@ -20,27 +27,39 @@ router.get("/", (req, res) => {
     res.status(200).json({message:'Login sucessful',user});
 })*/
 
-router.route("/AccademiStaffSignup").post((req, res) => {
-  
+router.route("/AccademiStaffSignup").post(async(req, res) => {
+  try{
 
-  const { fullName, address, email, contactNumber, department, password } =
-    req.body;
+  const { 
+    fullName, 
+    address, 
+    email, contactNumber, 
+    department, 
+    password } =   req.body;
 
-  var newAcademicStaff = {
+  const newAcademicStaff = new academicStaff({
     fullName,
     address,
     email,
     contactNumber,
     department,
     password,
-  };
+  });
 
-  console.log(newAcademicStaff)
-
-  academicStaff
-    .create(newAcademicStaff)
-    .then(() => res.json("User added"))
-    .catch((err) => res.status(400).json("Error:" + err));
+  await newAcademicStaff.save();
+  res.json("User added");
+} catch (error) {
+  res.status(400).json({ error: "Error creating user" });
+}
 });
+
+router.post(
+  "/Login",
+  passport.authenticate("local", { session: false }),
+  academicStaffController.login
+);
+  
+
+
 
 module.exports = router;

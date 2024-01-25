@@ -9,7 +9,7 @@ const LocalStrategy = require("passport-local");
 const bodyParser = require("body-parser");
 const passport = require("passport");
 
-require("./middleware/auth.js")();
+// require("./middleware/auth.js")();
 
 const app = express();
 const port = process.env.PORT || 5000;
