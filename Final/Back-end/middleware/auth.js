@@ -1,34 +1,37 @@
+const User = require("../models/student");
+const passport = require("passport");
+const passportJWT = require("passport-jwt");
+const config = require("../config/config");
 
-var User = require("../models/student");
-var passport = require("passport");
-var passportJWT = require("passport-jwt");
-var config = require("../config/config");
-var ExtractJwt = passportJWT.ExtractJwt;
-var Strategy = passportJWT.Strategy;
+const JWTStrategy = passportJWT.Strategy;
+const ExtractJwt = passportJWT.ExtractJwt;
 
-var params = {
+const opts = {
+  jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
   secretOrKey: config.jwtSecret,
-  jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken()
 };
 
-module.exports = function() {
-  var strategy = new Strategy(params, function(payload, done) {
-    User.findById(payload.id, function(then, student) {
-      if (then) {
+module.exports = function () {
+  const strategy = new JWTStrategy(opts, async (payload, done) => {
+    try {
+      const user = await User.findById(payload.id);
+
+      if (!user) {
         return done(new Error("UserNotFound"), null);
-      } else if (payload.expire <= Date.now()) {
-        return done(new Error("TokenExpired"), null);
-      } else{
-        return done(null, student);
       }
-    });
+
+      if (payload.expire <= Date.now()) {
+        return done(new Error("TokenExpired"), null);
+      }
+
+      return done(null, user);
+    } catch (error) {
+      console.error(error);
+      return done(error, null);
+    }
   });
 
   passport.use(strategy);
 
-  return { initialize: function() { return passport.initialize() }};
+  return { initialize: () => passport.initialize() };
 };
-
-
-
-

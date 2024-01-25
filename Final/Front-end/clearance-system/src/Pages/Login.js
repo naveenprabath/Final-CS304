@@ -6,6 +6,8 @@ import Img1 from "../Images/logo.png";
 import Cookies from "universal-cookie";
 import axios from "axios";
 
+const cookie = new Cookies();
+
 function LoginAlert() {
   const [show, setShow] = useState(false);
   const [email, setEmail] = useState("");
@@ -31,33 +33,34 @@ function LoginAlert() {
         email: email,
         password: password,
       });
+      
 
-      const data = await response.json();
-
-      if (response.ok) {
+      if (response.status == 200) {
+        console.log("running");
         // Successful login
         // TODO: save jwt token to a cookie names 'authToken' use Cookie-js library
 
         if (response.data.token) {
-          Cookies.set("autoCreditCookie", response.data.token, {
-            path: "/",
-            maxAge: 60 * 60 * 24,
-          });
+          cookie.set("Clearance", response.data.token);
+          
 
-          // window.location.href ="/";
+          window.location.href ="/ClearanceReport";
+
+          setLoginError("");
+          handleClose();
         }
-        setLoginError("");
-        handleClose();
+        
       } else {
         // Invalid credentials
         setLoginError(
-          data.error || "Invalid Email or password. Please try again."
+          response.data.error || "Invalid Email or password. Please try again."
         );
       }
     } catch (error) {
       console.error("Error during login:", error);
     }
   };
+
   return (
     <div>
       <Button
@@ -92,7 +95,7 @@ function LoginAlert() {
             </h2>
           </div>
         </Modal.Header>
-        <Form onSubmit={handleLogin()}>
+        <Form>
           <Modal.Body>
             {loginError && <p className="text-danger">{loginError}</p>}
             <Form.Group controlId="username">
@@ -118,7 +121,7 @@ function LoginAlert() {
             </Form.Group>
           </Modal.Body>
           <Modal.Footer>
-            <a href="./ClearanceReport">
+            {/* <a href="./ClearanceReport"> */}
               <Button
                 variant="primary"
                 style={{
@@ -126,10 +129,15 @@ function LoginAlert() {
                   margin: "0 200px",
                   fontFamily: "times new roman",
                 }}
+                onClick={(e) => {
+                  console.log("clicked");
+                  e.preventDefault();
+                  handleLogin();
+                }}
               >
                 LOGIN
               </Button>
-            </a>
+            {/* </a> */}
           </Modal.Footer>
         </Form>
       </Modal>

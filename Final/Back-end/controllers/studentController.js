@@ -1,33 +1,52 @@
-
-const student = require("../models/student")
-const config = require("../config/config")
+const student = require("../models/student");
+const config = require("../config/config");
 const jwt = require("jwt-simple");
 
+exports.login = async function (req, res) {
+  try {
+    const studentRef = await student.findOne({ email: req.body.email });
+    console.log(studentRef)
 
-exports.login = function (req, res) {
-    console.log("ghgfhf");
-  student.findOne({ email: req.body.email }, (then, student) => {
-    if (then) {
-      console.log("Error");
-      res.json({ then: then })
+    if (!studentRef) {
+      res.status(401).json({ error: "Invalid email or password" });
     } else {
-        var payload = { 
-            password: student.password, 
-            expire: Date.now() + 1000 * 60 * 60 * 24 * 7 
-        }
+      const payload = {
+        id: studentRef._id, // Use student ID for authentication
+        expire: Date.now() + 1000 * 60 * 60 * 24 * 7,
+      };
 
-      var token = jwt.encode(payload, config.jwtSecret)
+      const token = jwt.encode(payload, config.jwtSecret);
 
-      res.json({ token: token })
+      res.json({ token });
     }
-  });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal server error" });
+  }
 };
 
+exports.profile = async function (req, res) {
+  try {
+    const decoded = jwt.decode(req.query.secret_token, config.jwtSecret);
 
-exports.profile = function(req, res) {
-  res.json({
-    message: 'You made it to the secured profile',
-    student: req.student,
-    token: req.query.secret_token
-  })
-}
+    if (!decoded) {
+      res.status(401).json({ error: "Invalid token" });
+      return;
+    }
+
+    const student = await student.findById(decoded.id);
+
+    if (!student) {
+      res.status(404).json({ error: "Student not found" });
+      return;
+    }
+
+    res.json({
+      message: "You made it to the secured profile",
+      student,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+};

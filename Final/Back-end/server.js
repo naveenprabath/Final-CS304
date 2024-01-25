@@ -17,34 +17,31 @@ const port = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect(process.env.MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+mongoose.connect(process.env.MONGO_URI); // Removed deprecated options
 
-// passport.use(new LocalStrategy(student.authenticate()));
 passport.serializeUser(student.serializeUser());
 app.use(passport.initialize());
 passport.use(
-  new LocalStrategy({ usernameField: "email" }, function (
-    username,
-    password,
-    done
-  ) {
-    student.findOne({ username: username }, function (then, user) {
-      if (then) {
-        return done(then);
-      }
+  new LocalStrategy({ usernameField: "email" }, async (username, password, done) => {
+    try {
+      const user = await student.findOne({ email: username });
       if (!user) {
         return done(null, false);
       }
-      if (!user.verifyPassword(password)) {
+      if (user.password != password) {
         return done(null, false);
       }
       return done(null, user);
-    });
+    } catch (error) {
+      return done(error);
+    }
   })
 );
+
+app.use(bodyParser.urlencoded({ extended: false }));
+
+// ... rest of your code ...
+
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
