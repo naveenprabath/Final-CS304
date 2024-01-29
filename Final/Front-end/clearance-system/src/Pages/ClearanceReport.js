@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Table from 'react-bootstrap/Table';
 import saveAs from 'file-saver';
 import Img1 from "../Images/logo.png";
+import Complain from "../Pages/Complain";
 
 const ClearanceReport = () => {
   const [showReportModal, setShowReportModal] = useState(true);
@@ -93,8 +94,10 @@ const ClearanceReport = () => {
         <Button variant="primary" onClick={downloadReport}>
           Download Report
         </Button>
-        <a href="./SlipManagement"><Button variant="danger"style={{ color: 'black',  fontFamily:"times new roman" }}>Payment</Button></a>
-        <a href="./Complain" ><Button variant="danger" style={{ color: 'black',  fontFamily:"times new roman" }}>Complain</Button></a>
+       <Button variant="danger"style={{ color: 'black',  fontFamily:"times new roman" }}>Payment</Button>
+        <Button variant="" style={{ color: 'black',  fontFamily:"times new roman" }}><div style={{ fontFamily: "times new roman", color: "#FFC53A", textAlign: "center" }}> 
+            <Complain/>
+          </div></Button>
       </Modal.Footer>
     </Modal>
   );

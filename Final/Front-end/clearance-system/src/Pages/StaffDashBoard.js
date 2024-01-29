@@ -13,7 +13,8 @@ import ADDClearance from "./ADDClearance";
 import AccademiStaffSignup from "./AccademiStaffSignup";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faUserPlus, faSignInAlt, faCalendarAlt, faCreditCard, faHeadset } from '@fortawesome/free-solid-svg-icons';
-
+import Img1 from "../Images/logo.png";
+import Img2 from "../Images/StaffDashboard.png";
 
 
 function StaffDashBoard(){
@@ -23,6 +24,8 @@ function StaffDashBoard(){
             
              
       };
+
+      
 
       const pageStyles = {
         backgroundColor: 'white',
@@ -34,52 +37,77 @@ function StaffDashBoard(){
       };
 
       const cardStyle = {
-        width: '18rem',
-        backgroundColor: 'white',
-        minHeight: '40vh',
-        boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
-        transform: 'perspective(1000px) ',
-        width: '18rem', 
-        color:'back', 
-        backgroundColor: "white" ,
-        minHeight: '40vh'
+        width: '300px',
+        height: '200px',
+        backgroundColor:  'rgba(255, 255, 255, 0.8)',
+        padding: '20px',
+        margin: '10px',
+        borderRadius: '10px',
+        boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+       
+      };
+      const navBarStyle = {
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        padding: '10px',
+        height: '55px',
+        backgroundColor:  'rgba(255, 255, 255, 0.8)',
+        color: '#000',
+        borderRadius: '2px',
+      };
+    
+      const searchBarStyle = {
+        marginRight: '5px',
+      className: "d-flex",
+      borderRadius: '15px',
+      };
+
+      const backgroundImageStyle = {
+        backgroundImage: `url(${Img2})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        height: '110vh',
+        position: 'relative',
       };
       
     return(
         
-        <div style={pageStyles}>
-    <Navbar bg="blue" expand="lg" className="p-2" style={{backgroundColor: "#B40505"}} >
-      <div className="container">
-        <Navbar.Brand href="/Home" style={{ fontFamily: "times new roman", color: "#FFC53A", textAlign: "center",}}>University of Peradeniya Clearnce</Navbar.Brand>
-        <Navbar.Toggle aria-controls="navbarNav" />
-        <Navbar.Collapse id="navbarNav">
-          <Nav className="me-auto">
-            
-          </Nav>
-          <Form className="d-flex">
-            <FormControl type="text" placeholder="Search" className="mr-2" />
-            <div className="mx-1"></div>
-            <Button variant="primary" size="sm" style={{color:"black",}}>Search</Button>
-          </Form>
-          <Button variant="outline"  className="mx-1" size="sm" style={{color:"black",backgroundColor: "#B40505" }}>   <Login/>      </Button>
-          <Button variant="" className="mx-1" size="sm" style={{color:"black",}}>   <AccademiStaffSignup/>      </Button>
-          <Form.Check type="switch" id="flexSwitchCheckDefault" label="DarkMode" style={{ '--switch-track-color': 'red', '--switch-thumb-color': 'black',
-            }}  />
-        </Navbar.Collapse>
-          </div>
-            </Navbar>
+        <div style={backgroundImageStyle}>
+   <nav style={navBarStyle}>
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+          <img
+            src={Img1}
+            alt="Logo"
+            style={{ width: '60px', height: '60px', marginRight: '10px' }}
+          />
+          <span style={{ fontSize: '24px', fontFamily: 'times new roman', color: "#B40505" }}>
+          Faculty of Science library
+          </span>
+        </div>
+        <div>
+          <input type="text"style={searchBarStyle} />
+          <Button variant="" style={{ fontFamily: "times new roman", color:  "#B40505", textAlign: "center",marginRight:"5" }}>
+              Search
+            </Button>
+          
+          
+        </div>
+        <div><Form.Check type="switch" id="flexSwitchCheckDefault" label="DarkMode" style={{color:"#B40505", 
+            }}  /></div>
+      </nav>
              
             <br/>
             <br/>
-               <Container style={containerStyle}>
+               <Container >
                 <Row md={6} className="className=d-flex align-items-center justify-content-center p-1">
                   <Col md={4} className="className=d-flex align-items-center justify-content-center p-1">
                     <Card style={cardStyle}>
                       <Card.Body className="text-center">
                         <Card.Title>ADD Clearnce</Card.Title>
-                        <br />
+                        
                         <Card.Text>
-                          <FontAwesomeIcon icon={faHome} style={{ fontSize: 120 }} />
+                          <FontAwesomeIcon icon={faHome} style={{ fontSize: 50 }} />
                         </Card.Text>
                         <div className="p-2 ms-auto">
                         <ADDClearance />
@@ -91,10 +119,15 @@ function StaffDashBoard(){
                   <Card style={cardStyle}>
                     <Card.Body className="text-center">
                       <Card.Title>View Report</Card.Title>
-                      <br/>
+                     
                       <Card.Text>
-                        <FontAwesomeIcon icon={faUserPlus} style={{ fontSize: 120 }} />
+                        <FontAwesomeIcon icon={faUserPlus} style={{ fontSize: 50 }} />
+                        
+                        
+                        
+                        
                       </Card.Text>
+                      <Button variant="" style={{color:"#B40505", fontWeight: 'bold'}}>View</Button>
                       
                     </Card.Body>
                   </Card>
@@ -103,11 +136,12 @@ function StaffDashBoard(){
                   <Card style={cardStyle}>
                     <Card.Body className="text-center">
                       <Card.Title>Student Complain</Card.Title>
-                      <br/>
+                     
                       <Card.Text>
-                        <FontAwesomeIcon icon={faSignInAlt} style={{ fontSize: 120 }} />
+                        <FontAwesomeIcon icon={faSignInAlt} style={{ fontSize: 50 }} />
+                       
                       </Card.Text>
-                      
+                      <Button variant="" style={{color:"#B40505", fontWeight: 'bold'}}>Complain</Button>
                     </Card.Body>
                   </Card>
                 </Col>
@@ -118,19 +152,21 @@ function StaffDashBoard(){
                   <Card style={cardStyle}>
                     <Card.Body className="text-center">
                       <Card.Title>Account Renew</Card.Title>
-                      <br/>
+                      
                       <Card.Text>
-                        <FontAwesomeIcon icon={faCalendarAlt} style={{ fontSize: 120 }} />
+                        <FontAwesomeIcon icon={faCalendarAlt} style={{ fontSize: 50 }} />
+
                       </Card.Text>
-                      <Button variant="primary" style={{color:"black"}}>Click Me</Button>
+                     
                     </Card.Body>
+                    <Button variant="" style={{color:"#B40505", fontWeight: 'bold'}}>Renew</Button>
                   </Card>
                 </Col>
                 <Col md={4} className="className=d-flex align-items-center justify-content-center p-1">
                   <Card style={cardStyle}>
                     <Card.Body className="text-center">
                       <Card.Title></Card.Title>
-                      <br/>
+                      
                       <Card.Text>
                       
                       </Card.Text>
@@ -144,11 +180,11 @@ function StaffDashBoard(){
                   <Card style={cardStyle}>
                     <Card.Body className="text-center">
                       <Card.Title>Admin Support</Card.Title>
-                      <br/>
+                      
                       <Card.Text>
-                        <FontAwesomeIcon icon={faHeadset} style={{ fontSize: 120 }} />
+                        <FontAwesomeIcon icon={faHeadset} style={{ fontSize: 50 }} />
                       </Card.Text>
-                      <Button variant="primary" style={{color:"black"}}>Click Me</Button>
+                      <Button variant="" style={{color:"#B40505"}}><b>Support</b></Button>
                     </Card.Body>
                   </Card>
                 </Col>
@@ -158,14 +194,14 @@ function StaffDashBoard(){
 
             
     
-        <footer style={{ background: "#B40505", padding: '10px' }}>
+        <footer style={{  padding: '10px' }}>
                     <Container>
                     <Row>
                         <Col md={6}>
-                        <p style={{color:"#FFC53A"}}>&copy; {new Date().getFullYear()} Your Company Name</p>
+                        <p style={{color:"#B40505"}}>&copy; {new Date().getFullYear()} <b>Your Company Name</b></p>
                         </Col>
                         <Col md={6} className="text-right">
-                        <p  style={{color:"#FFC53A"}}>Contact: contact@example.com</p>
+                        <p  style={{color:"#B40505"}}><b>Contact: contact@example.com</b></p>
                         </Col>
                     </Row>
                     </Container>

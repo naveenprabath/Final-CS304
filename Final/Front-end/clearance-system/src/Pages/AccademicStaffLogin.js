@@ -64,15 +64,18 @@ function Login() {
   return (
     <div>
       <Button
-        variant="primary"
+        variant=""
         onClick={handleShow}
         style={{
           fontFamily: "times new roman",
-          color: "black",
+          color: "#B40505",
           textAlign: "center",
+          fontWeight: 'bold',
         }}
       >
+        <b>
         LogIn
+        </b>
       </Button>
 
       <Modal show={show} onHide={handleClose} centered>

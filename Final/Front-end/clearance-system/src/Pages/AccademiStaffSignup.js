@@ -51,7 +51,13 @@ function AccademiStaffSignup() {
 
   return (
     <div>
-      <Button variant="primary" onClick={handleShow}>
+      <Button variant="" onClick={handleShow}
+      style={{
+        fontFamily: "times new roman",
+        color: "#B40505",
+        textAlign: "center",
+        fontWeight: 'bold',
+      }}>
         Sign Up
       </Button>
 

@@ -47,8 +47,8 @@ function AddClearance() {
   };
   return (
     <div>
-      <Button variant="primary" onClick={handleShow} style={{ fontFamily: "times new roman",  color: "black",     textAlign: "center"}}>
-        ADD 
+      <Button variant="" onClick={handleShow} style={{ fontFamily: "times new roman",  color: "#B40505",     textAlign: "center"}}>
+       <b> ADD </b>
       </Button>
 
       <Modal show={show} onHide={handleClose} centered>

@@ -14,6 +14,12 @@ import Complain from './Pages/Complain';
 import {useState} from 'react';
 import ProtectRoute from './components/protectedRoute';
 import AccademicStaffLogin from './Pages/AccademicStaffLogin';
+import Gym from './Pages/Gym';
+import ScienceLibrary from './Pages/ScienceLibary';
+import Accommodation from './Pages/Accommodation';
+import AccountRenew from './Pages/AccountRenew';
+import PasswordChange from './Pages/PasswordChange';
+
 
 function App(){
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -36,6 +42,14 @@ function App(){
         <Route exact path='/ADDClearance' element={<AddClearance/>} />
         <Route exact path='/Complain' element={<Complain/>} />
         <Route exact path='/AccademicStaffLogin' element={ <AccademicStaffLogin/>} />
+        <Route exact path='/Gym' element={ <Gym/>} />
+        <Route exact path='/ScienceLibrary' element={ <ScienceLibrary/>} />
+        <Route exact path='/Accommodation' element={ <Accommodation/>} />
+        <Route exact path='/AccountRenew' element={ <AccountRenew/>} />
+        <Route exact path='/PasswordChange' element={ <PasswordChange/>} />
+      
+        
+        
         
         </Routes>
       </div>

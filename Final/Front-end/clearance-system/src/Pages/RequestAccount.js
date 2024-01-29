@@ -14,6 +14,8 @@ import Login from "./Login";
 import Signup from "./Signup";
 import AccademiStaffSignup from "./AccademiStaffSignup";
 import AccademicStaffLogin from "./AccademicStaffLogin";
+import Img2 from "../Images/RequestAccount.png";
+import Img1 from "../Images/logo.png";
 
 function RequestAccount() {
     const containerStyle = {
@@ -46,45 +48,58 @@ function RequestAccount() {
     };
   
     const cardStyle = {
-      width: '18rem',
-      backgroundColor: 'white',
-      minHeight: '40vh',
-      boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
-      transform: 'perspective(1000px) ',
-      width: '18rem', 
-      color:'back', 
-      backgroundColor: "white" ,
-      minHeight: '40vh'
+      width: '300px',
+      height: '200px',
+      backgroundColor:  'rgba(255, 255, 255, 0.8)',
+      padding: '20px',
+      margin: '10px',
+      borderRadius: '10px',
+      boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+     
+    };
+
+    const backgroundImageStyle = {
+      backgroundImage: `url(${Img2})`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      height: '110vh',
+      position: 'relative',
     };
     return (
-      <div style={pageStyles}>
+      <div style={backgroundImageStyle } >
       <header>
-      <Navbar bg="blue" expand="lg" className="p-2" style={{backgroundColor: "#B40505"}} >
-        <div className="container">
-          <Navbar.Brand href="/Home" style={{ fontFamily: "times new roman", color: "#FFC53A", textAlign: "center",}}>University of Peradeniya </Navbar.Brand>
+      <Navbar bg="blue" expand="lg" className="p-2" style={{backgroundColor:'rgba(255, 255, 255, 0.8)', padding: '10px',
+    height: '55px'}} >
+      <img
+            src={Img1}
+            alt="Logo"
+            style={{ width: '60px', height: '60px', marginRight: '10px' }}
+          />
+       
+          <Navbar.Brand href="/Home" style={{ fontFamily: "times new roman", color:"#B40505", textAlign: "center",}}>University of Peradeniya </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarNav" />
           <Navbar.Collapse id="navbarNav">
             <Nav className="me-auto">
               
             </Nav>
             <Form className="d-flex">
-              <FormControl type="text"  className="mr-2" />
+              <FormControl type="text"  className="mr-2"  style={{ marginRight: '5px',   className: "d-flex",   borderRadius: '15px',}} />
               <div className="mx-2"></div>
-              <Button variant="primary" size="sm" style={{ color: "black" }}>
-               Search
+              <Button variant="" size="sm" style={{color:"#B40505",}}>
+               <b>Search</b>
               </Button>
             </Form>
             <div className="mx-2"></div>
-            <Form.Check type="switch" id="flexSwitchCheckDefault" label="DarkMode" style={{ '--switch-track-color': 'red', '--switch-thumb-color': 'black',
-    }}  />
+            <Form.Check type="switch" id="flexSwitchCheckDefault" label="DarkMode" style={{color:"#B40505", 
+            }}   />
           </Navbar.Collapse>
-        </div>
+       
       </Navbar>
       </header>
   
         <br />
   
-        <Container style={containerStyle}>
+        <Container style={{backgroundColor:'rgba(255, 255, 255, 0.8)'}}>
           <Row>
             <Col style={{color:"#B40505"}}>
               {" "}
@@ -92,11 +107,11 @@ function RequestAccount() {
                 Note : This is a Request Account Dashboard and if will not Signup
                 plese Signup First.If you Sign Up go to University GSuite email
                 Click to...
-                <br />
+                
                 <div className="p-2 ms-auto">
                 <Login />
               </div>
-                .<br />{" "}
+                
               </p>
             </Col>
           </Row>
@@ -123,10 +138,10 @@ function RequestAccount() {
                 style={cardStyle}
               >
                 <Card.Body className="text-center">
-                  <Card.Title>ACCEDEMIC STAFF SIGNUP </Card.Title>
-                  <br/>
+                  <Card.Title>STAFF SIGNUP </Card.Title>
+                  
                   <Card.Text>
-                          <FontAwesomeIcon icon={faUserPlus} style={{ fontSize: 120 }} />
+                          <FontAwesomeIcon icon={faUserPlus} style={{ fontSize: 60 }} />
                         </Card.Text>
                         <div className="p-2 ms-auto">
                 <AccademiStaffSignup />
@@ -146,10 +161,10 @@ function RequestAccount() {
                 style={cardStyle}
               >
                 <Card.Body className="text-center">
-                  <Card.Title> ACCEDEMIC STAFF LogIn</Card.Title>
-                  <br/>
+                  <Card.Title> STAFF LOGIN</Card.Title>
+                  
                   <Card.Text>
-                          <FontAwesomeIcon icon={faUserPlus} style={{ fontSize: 120 }} />
+                          <FontAwesomeIcon icon={faUserPlus} style={{ fontSize: 60 }} />
                         </Card.Text>
                         <div className="p-2 ms-auto">
                 <AccademicStaffLogin/>
@@ -168,9 +183,9 @@ function RequestAccount() {
               >
                 <Card.Body className="text-center">
                   <Card.Title>STUDENT SIGNUP</Card.Title> 
-                  <br/>
+                  
                   <Card.Text>
-                          <FontAwesomeIcon icon={faUserPlus} style={{ fontSize: 120 }} />
+                          <FontAwesomeIcon icon={faUserPlus} style={{ fontSize: 60 }} />
                         </Card.Text>
                         <div className="p-2 ms-auto">
                 <Signup />
@@ -188,7 +203,7 @@ function RequestAccount() {
           <br />
           <br />
   
-          <footer style={{ backgroundColor: "#B40505", padding: "10px" }}>
+          <footer style={{  padding: "10px" }}>
             <Container>
               <Row>
                 <Col md={6}>

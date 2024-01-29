@@ -6,7 +6,9 @@ import Row from "react-bootstrap/Row";
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
-
+import Login from "./Login";
+import Img2 from "../Images/Uop.png";
+import Img3 from "../Images/mapgym.PNG";
 
 function Home(){
     const rowStyle = {
@@ -16,93 +18,171 @@ function Home(){
         backgroundColor: "white",
         minHeight: "100vh",
       };
+
+      const cardStyle = {
+        width: '300px',
+        height: '200px',
+        backgroundColor:  'rgba(255, 255, 255, 0.8)',
+        padding: '20px',
+        margin: '10px',
+        borderRadius: '10px',
+        boxShadow: '0 4px 8px rgba(0, 0, 0, 0.6)',
+       
+      };
+
+      const backgroundImageStyle = {
+        backgroundImage: `url(${Img2})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        height: '143vh',
+        position: 'relative',
+      };
+
+      const transparentCardStyle = {
+        backgroundColor: 'rgba(255, 255, 255, 0.5)', 
+        minHeight: '50vh',
+        width: '300px',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+      };
+      
+
+      
+      
 return(
-    <div style={pageStyles}>
+    <div style={backgroundImageStyle}>
         <header>
           <Navbar/>
         </header>
 
-        <Row style={{ backgroundColor: "#B40505" }}>
-        <h1
-          style={{
-            fontFamily: "times new roman",
-            color: "#FFC53A",
-            textAlign: "center",
-            border: "2px solid",
-          }}
-        >
-          University Of Peradeniya Faculty Of Science <br />
-          Clearnce System
-        </h1>
-        </Row>
-
-        <Row>
-         <hr />
-        </Row>
-
-        <Container>
-            <Row>
-                 <Image/>
-            </Row>
-        </Container>
-
-        <Row style={rowStyle}></Row>
-        <Row style={rowStyle}></Row>
-        <Row style={rowStyle}></Row>
-
-        <div style={{ backgroundColor: "#B40505" }}>
+        
+        
+        <div >
         <Container>
           <br />
           <Row>
             <Col>
-              <Card style={{ width: "18rem", background: "#fd7e14" }}>
+              <Card style={cardStyle}>
                 
                 <Card.Body>
-                  <Card.Title>Notice Board</Card.Title>
-                  <Card.Text>Special notices about the Clearnce <br/> </Card.Text>
+                  <Card.Title><center>Notice Board</center></Card.Title>
+                  <Card.Text><br/><center>2023/2024 General convercation settle your Clearnce before 20/04/2024</center></Card.Text>
                 </Card.Body>
               </Card>
             </Col>
             <Col> </Col>
 
             <Col>
-              <Card style={{ width: "18rem", background: "#fd7e14" }}>
+              <Card style={cardStyle}>
               
                 <Card.Body>
-                  <Card.Title>Quick Link</Card.Title>
-                  <Card.Text>Downloard the report</Card.Text>
+                  <Card.Title><center>Login & Downloard<br/>Clearance Report</center></Card.Title>
+                  <Card.Text>
+                <center>
+                <div className="p-2 ms-auto">
+            <     Login/>
+                </div>
+                </center>
+                </Card.Text>
                 </Card.Body>
               </Card>
             </Col>
             <Col> </Col>
 
             <Col>
-              <Card style={{ width: "18rem", background: "#fd7e14" }}>
+              <Card style={cardStyle}>
                 
                 <Card.Body>
-                  <Card.Title>Quick Link</Card.Title>
-                  <Card.Text>Online Payment</Card.Text>
+                  <Card.Title><center>Clearance Notice</center></Card.Title>
+                  <Card.Text><br/><center>If you have any problem you can complain or email us</center></Card.Text>
                 </Card.Body>
               </Card>
             </Col>
           </Row>
-          <Row style={rowStyle}></Row>
-          <Row style={rowStyle}></Row>
-          <Row style={rowStyle}></Row>
-          <Row style={rowStyle}></Row>
+          
+          
+        </Container>
+
+        <Container>
+          <br />
+          <Row>
+            <Col>
+              <Card style={cardStyle}>
+                
+                <Card.Body>
+                  <Card.Title><center>Notice </center></Card.Title>
+                  <Card.Text><center>Verification of students’ Names and Contact Details - Batch 18 - 300 Level - Academic Year 2021-2022</center></Card.Text>
+                </Card.Body>
+              </Card>
+            </Col>
+            <Col> </Col>
+
+            <Col>
+  <Card style={{width: '300px',   height: '200px',  margin: '10px',    borderRadius: '10px',     boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)'}}>
+    
+      <img src={Img3} style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '10px' }}/>
+    
+  </Card>
+</Col>
+
+            <Col> </Col>
+
+            <Col>
+              <Card style={cardStyle}>
+                
+                <Card.Body>
+                  <Card.Title><center>Faculty of Science</center></Card.Title>
+                  <Card.Text>"To be a globally acclaimed faculty, excelling in education and research, fostering scientific literacy with ethical principles."</Card.Text>
+                </Card.Body>
+              </Card>
+            </Col>
+          </Row>
+          <Container>
+            <br/>
+          <Row >
+        
+      
+        <Col md={6} style={{ alignItems: 'center' }}>
+          <Card style={transparentCardStyle}>
+            <Card.Body>
+              <Card.Title>About Us</Card.Title>
+              <Card.Text>xxxxx</Card.Text>
+            </Card.Body>
+          </Card>
+        </Col>
+
+        <Col md={6} style={{ alignItems: 'center' }}>
+          <Card style={transparentCardStyle}>
+            <Card.Body>
+              <Card.Title>About Us</Card.Title>
+              <Card.Text>xxxxx</Card.Text>
+            </Card.Body>
+          </Card>
+        </Col>
+        
+
+        
+
+       
+      </Row>
+      </Container>
+
+          
         </Container>
       </div>
+      
+  
 
-      <Aboutus/>
-
-      <footer style={{ background: "#B40505" , padding: "10px" }}>
+      <footer style={{  padding: "10px" }}>
   
          <Row>
             <Col md={6}>
-                <p style={{ ontFamily: "times new roman",  color: "#FFC53A"}}>&copy; {new Date().getFullYear()} Faculty Clearnce System</p>
+                <p style={{ ontFamily: "times new roman",  color:  "#B40505" , fontWeight: 'bold'}}>&copy; {new Date().getFullYear()} Faculty Clearnce System</p>
             </Col>
             <Col md={6} className="text-right">
-                <p style={{ ontFamily: "times new roman",  color: "#FFC53A"}}>Contact: contact@example.com</p>
+                <p style={{ ontFamily: "times new roman",  color: "#B40505", fontWeight: 'bold'}}>Contact: contact@example.com</p>
             </Col>
          </Row>
           

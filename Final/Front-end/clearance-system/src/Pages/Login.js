@@ -64,12 +64,13 @@ function LoginAlert() {
   return (
     <div>
       <Button
-        variant="primary"
+        variant=""
         onClick={handleShow}
         style={{
           fontFamily: "times new roman",
-          color: "black",
+          color: "#B40505",
           textAlign: "center",
+          fontWeight: 'bold',
         }}
       >
         LogIn
@@ -124,6 +125,7 @@ function LoginAlert() {
             {/* <a href="./ClearanceReport"> */}
               <Button
                 variant="primary"
+                type="close"
                 style={{
                   color: "#333",
                   margin: "0 200px",
@@ -133,6 +135,7 @@ function LoginAlert() {
                   console.log("clicked");
                   e.preventDefault();
                   handleLogin();
+                  
                 }}
               >
                 LOGIN
