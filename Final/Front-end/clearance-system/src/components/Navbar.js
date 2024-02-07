@@ -8,6 +8,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Login from "../Pages/Login";
 import Signup from '../Pages/Signup';
 import Img1 from "../Images/logo.png";
+import ScienceLibrary from "../Pages/ScienceLibrary";
+import Accommodation from "../Pages/Accommodation";
+import Gym from "../Pages/Gym";
 
 
 
@@ -28,31 +31,34 @@ function Bar() {
           
       </div>
       
-        <Navbar.Brand href="/Home" style={{ fontFamily: "times new roman", color: "#B40505", textAlign: "center", fontWeight: 'bold' }}>
+        <Navbar.Brand href="/Home" style={{ fontFamily: "Lora", color: "#B40505", textAlign: "center", fontWeight: 'bold' }}>
           University of Peradeniya
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarNav" />
         <Navbar.Collapse id="navbarNav">
           <Nav className="me-auto"> 
-            <Nav.Link href="/Dashboard" className="nav-link" style={{ fontFamily: "times new roman", color: "#B40505", textAlign: "center", fontWeight: 'bold' }}>
+            <Nav.Link href="/Dashboard" className="nav-link" style={{ fontFamily: "Lora", color: "#B40505", textAlign: "center", fontWeight: 'bold' }}>
               Dashboard
             </Nav.Link>
-            <Nav.Link href="/ContactUs" className="nav-link" style={{ fontFamily: "times new roman", color: "#B40505", textAlign: "center", fontWeight: 'bold'}}>
-              ContactUs
+            <Nav.Link href="/ScienceLibrary" className="nav-link" style={{ fontFamily: "Lora", color: "#B40505", textAlign: "center", fontWeight: 'bold'}}>
+              Library
             </Nav.Link>
-            <Nav.Link href="/" className="nav-link" style={{ fontFamily: "times new roman", color: "#B40505", textAlign: "center" , fontWeight: 'bold' }}>
-              AboutUs
+            <Nav.Link href="/Accommodation" className="nav-link" style={{ fontFamily: "Lora", color: "#B40505", textAlign: "center" , fontWeight: 'bold' }}>
+              Accommodation
+            </Nav.Link>
+            <Nav.Link href="/Gym" className="nav-link" style={{ fontFamily: "Lora", color: "#B40505", textAlign: "center" , fontWeight: 'bold' }}>
+              Gymnasium
             </Nav.Link>
           </Nav>
           <Form className="d-flex">
-            <FormControl type="text" placeholder="Search"  style={{ marginRight: '5px',   className: "d-flex",   borderRadius: '15px',}}/>
+            <FormControl type="text" placeholder="Search"  style={{ marginRight: '5px',   className: "d-flex",   borderRadius: '15px', fontFamily: "Lora"}}/>
             <div className="mx-1"></div>
-            <Button variant="" style={{ fontFamily: "times new roman", color: "#B40505", textAlign: "center",fontWeight: 'bold'}}>
-              Search
+            <Button variant="" style={{ fontFamily: "Lora", color: "#B40505", textAlign: "center", fontWeight: 'bold'}}>
+             <b> Search</b>
             </Button>
           </Form>
-          <Button variant="" style={{ fontFamily: "times new roman", color: "#FFC53A", textAlign: "center" }} >
-          <div style={{ fontFamily: "times new roman", color: "#FFC53A", textAlign: "center" }}> 
+          <Button variant="" style={{ fontFamily: "Lora", color: "#FFC53A", textAlign: "center" }} >
+          <div style={{ fontFamily: "Lora", color: "#FFC53A", textAlign: "center" }}> 
             <Login/>
           </div>
           </Button>
@@ -61,7 +67,7 @@ function Bar() {
             <Signup/>
           </div>
           </Button>
-          <Form.Check type="switch"  id="flexSwitchCheckDefault" label="DarkMode" style={{ fontFamily: "times new roman", color: "#B40505", textAlign: "center",fontWeight: 'bold'}} />
+          <Form.Check type="switch"  id="flexSwitchCheckDefault" label="DarkMode" style={{ fontFamily: "Lora", color: "#B40505", textAlign: "center",fontWeight: 'bold'}} />
         </Navbar.Collapse>
      
     </Navbar>

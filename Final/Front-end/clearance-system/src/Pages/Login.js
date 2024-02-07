@@ -67,7 +67,7 @@ function LoginAlert() {
         variant=""
         onClick={handleShow}
         style={{
-          fontFamily: "times new roman",
+          fontFamily: "Lora",
           color: "#B40505",
           textAlign: "center",
           fontWeight: 'bold',
@@ -89,7 +89,7 @@ function LoginAlert() {
                 fontSize: "24px",
                 color: "#333",
                 margin: "0 130px",
-                fontFamily: "times new roman",
+                fontFamily: "Lora",
               }}
             >
               LOGIN
@@ -129,7 +129,7 @@ function LoginAlert() {
                 style={{
                   color: "#333",
                   margin: "0 200px",
-                  fontFamily: "times new roman",
+                  fontFamily: "Lora",
                 }}
                 onClick={(e) => {
                   console.log("clicked");

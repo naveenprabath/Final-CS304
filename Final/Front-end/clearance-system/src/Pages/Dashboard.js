@@ -14,6 +14,7 @@ import Login from "./Login";
 import Signup from "./Signup";
 import Img2 from "../Images/Dashboard2.png";
 import Img1 from "../Images/logo.png";
+import AccountRenew from "./AccountRenew";
 
 function Dashboard(){
     
@@ -39,6 +40,7 @@ function Dashboard(){
         margin: '10px',
         borderRadius: '10px',
         boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+        fontFamily: "Lora"
        
       };
       
@@ -134,7 +136,9 @@ function Dashboard(){
                       <Card.Text>
                         <FontAwesomeIcon icon={faCalendarAlt} style={{ fontSize: 60 }} />
                       </Card.Text>
+                      <a href="/AccountRenew">
                       <Button variant="" style={{color:"#B40505", fontWeight: 'bold'}}>Click Me</Button>
+                      </a>
                     </Card.Body>
                   </Card>
                 </Col>

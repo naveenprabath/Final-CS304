@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Img1 from "../Images/logo.png";
 import Img2 from "../Images/Library.png";
 import { Button } from 'react-bootstrap';
-import Login from "../Pages/Login";
+import Login from "./Login";
 import Img3 from "../Images/mapgym.PNG";
 
 const Library = () => {

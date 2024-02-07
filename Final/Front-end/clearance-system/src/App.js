@@ -15,10 +15,11 @@ import {useState} from 'react';
 import ProtectRoute from './components/protectedRoute';
 import AccademicStaffLogin from './Pages/AccademicStaffLogin';
 import Gym from './Pages/Gym';
-import ScienceLibrary from './Pages/ScienceLibary';
+import ScienceLibrary from './Pages/ScienceLibrary';
 import Accommodation from './Pages/Accommodation';
 import AccountRenew from './Pages/AccountRenew';
 import PasswordChange from './Pages/PasswordChange';
+import IssueForm from './Pages/IssueForm';
 
 
 function App(){
@@ -47,7 +48,7 @@ function App(){
         <Route exact path='/Accommodation' element={ <Accommodation/>} />
         <Route exact path='/AccountRenew' element={ <AccountRenew/>} />
         <Route exact path='/PasswordChange' element={ <PasswordChange/>} />
-      
+        <Route exact path='/IssueForm' element={ <IssueForm/>} />
         
         
         

@@ -44,6 +44,7 @@ function StaffDashBoard(){
         margin: '10px',
         borderRadius: '10px',
         boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+        fontFamily: "Lora"
        
       };
       const navBarStyle = {
@@ -82,7 +83,7 @@ function StaffDashBoard(){
             style={{ width: '60px', height: '60px', marginRight: '10px' }}
           />
           <span style={{ fontSize: '24px', fontFamily: 'times new roman', color: "#B40505" }}>
-          Faculty of Science library
+          Faculty of Science Staff StaffDashBoard
           </span>
         </div>
         <div>

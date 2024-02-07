@@ -8,6 +8,9 @@ import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Img2 from "../Images/Library.png";
 import Img1 from "../Images/logo.png";
+import PasswordChange from './PasswordChange';
+import Signup from '../Pages/Signup';
+import IssueForm from './IssueForm';
 
 const AccountRenew = () => {
   const [darkMode, setDarkMode] = useState(false);
@@ -16,16 +19,37 @@ const AccountRenew = () => {
     setDarkMode(!darkMode);
   };
 
+  const [showModal, setShowModal] = useState(false);
+
+  const handleShow = () => setShowModal(true);
+  const handleClose = () => setShowModal(false);
+
+  const [showForm, setShowForm] = useState(false);
+
+  const handleShowForm = () => {
+    setShowForm(true);
+  };
+
+  const handleCloseForm = () => {
+    setShowForm(false);
+  };
+
   const navBarStyle = {
     backgroundColor: darkMode ? '#333' : 'rgba(255, 255, 255, 0.8)',
     color: darkMode ? '#fff' : '#000',
-    height: "6",
+    height: "5",
   };
 
   const cardStyle = {
     backgroundColor: darkMode ? 'rgba(0, 0, 0, 0.8)' : 'rgba(255, 255, 255, 0.8)',
     color: darkMode ? '#fff' : '#000',
     border: 'none',
+    width:'300px',
+    padding: '10px',
+    margin: "10px",
+    fontFamily:"Lora",
+    textAlign: 'center',
+   
   };
 
   const backgroundImageStyle = {
@@ -62,8 +86,19 @@ const AccountRenew = () => {
        
         <Card style={{ ...cardStyle, width: '18rem', margin: '0 10px' }}>
           <Card.Body>
-            <Card.Title>Password Change </Card.Title>
+            <Card.Title ><b>Password Change </b></Card.Title>
             <Card.Text>
+            <div>
+          <br/>
+     
+
+      <Button variant="" onClick={handleShow} style={{color: "#B40505"}}>
+        <b>Change Password</b>
+      </Button>
+
+      
+      <PasswordChange showModal={showModal} handleClose={handleClose} />
+    </div>
             
               
             </Card.Text>
@@ -72,20 +107,30 @@ const AccountRenew = () => {
 
         <Card style={{ ...cardStyle, width: '18rem', margin: '0 10px' }}>
           <Card.Body>
-            <Card.Title>New Account Request</Card.Title>
+            <Card.Title ><b>New Account Request</b></Card.Title>
+            <br/>
             <Card.Text>
-              {/* Add content for new account request */}
-              Add your content here...
+            <div  style={{fontFamily: "times new roman", color: "#FFC53A", textAlign: "center"}}>
+            <Signup/>
+          </div>
             </Card.Text>
           </Card.Body>
         </Card>
 
         <Card style={{ ...cardStyle, width: '18rem', margin: '0 10px' }}>
           <Card.Body>
-            <Card.Title>Report any Issue</Card.Title>
+            <Card.Title><b>Report any Issue</b></Card.Title>
+            <br/>
             <Card.Text>
-              {/* Add content for reporting issues */}
-              Add your content here...
+            <div>
+    
+      <Button variant="" onClick={handleShowForm} style={{color: "#B40505"}}>
+       <b> Report an Issue</b>
+      </Button>
+
+     
+      <IssueForm show={showForm} handleClose={handleCloseForm} />
+    </div>
             </Card.Text>
           </Card.Body>
         </Card>

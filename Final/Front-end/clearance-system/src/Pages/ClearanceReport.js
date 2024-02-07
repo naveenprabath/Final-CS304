@@ -12,14 +12,16 @@ const ClearanceReport = () => {
   useEffect(() => {
     // Generate the report when the component is mounted
     const reportData = {
-      id: '123456',
-      name: 'John Doe',
-      email: 'johndoe@email.com',
-      department: 'Computer Science',
+      id: 'S18904',
+      name: 'Naveen Prabath',
+      email: 's18904@sci.pdn.ac.lk',
+      combination: '04',
+      DepartmentClearence:false,
       libraryClearance: true,
       hostelClearance: false,
       sportsClearance: true,
       financialAidClearance: true,
+      total :'Rs.530.00'
     };
 
     const reportElement = document.getElementById('clearanceReport');
@@ -30,16 +32,19 @@ const ClearanceReport = () => {
         <p><strong>Student ID:</strong> ${reportData.id}</p>
         <p><strong>Name:</strong> ${reportData.name}</p>
         <p><strong>Email:</strong> ${reportData.email}</p>
-        <p><strong>Department:</strong> ${reportData.department}</p>
+        <p><strong>Combination:</strong> ${reportData.combination}</p>
         <h3>Clearance Status</h3>
         <Table striped bordered hover>
           <thead>
             <tr>
-              <th>Department</th>
               <th>Status</th>
             </tr>
           </thead>
           <tbody>
+            <tr>
+              <td>Department</td>
+              <td>${reportData.DepartmentClearence ? 'Cleared' : 'Pending'}</td>
+            </tr>
             <tr>
               <td>Library</td>
               <td>${reportData.libraryClearance ? 'Cleared' : 'Pending'}</td>
@@ -55,6 +60,10 @@ const ClearanceReport = () => {
             <tr>
               <td>Financial Aid</td>
               <td>${reportData.financialAidClearance ? 'Cleared' : 'Pending'}</td>
+            </tr>
+            <tr>
+              <td>Total</td>
+              <td>${reportData.total}</td>
             </tr>
           </tbody>
         </Table>

@@ -19,6 +19,7 @@ function AddClearance() {
   const [email, setEmail] = useState("");
   const [combination, setCombination] = useState("");
   const [clearenceDescription, setClearenceDescription] = useState("");
+  const [status, setStatus] = useState("");
   const [totalAmount, setTotalAmount] = useState("");
 
   const handleSubmit = () => {
@@ -31,12 +32,14 @@ function AddClearance() {
         email,
         combination,
         clearenceDescription,
+        status,
         totalAmount,
       },
     };
     axios(axiosConfig)
       .then((response) => {
         console.log(response);
+        response = "Successfully added clearence Details";
       })
       .catch((err) => {
         console.log(err);
@@ -47,7 +50,7 @@ function AddClearance() {
   };
   return (
     <div>
-      <Button variant="" onClick={handleShow} style={{ fontFamily: "times new roman",  color: "#B40505",     textAlign: "center"}}>
+      <Button variant="" onClick={handleShow} type="button" style={{ fontFamily: "times new roman",  color: "#B40505",     textAlign: "center"}}>
        <b> ADD </b>
       </Button>
 
@@ -92,22 +95,51 @@ function AddClearance() {
 
               <Form.Group className="mb-3" controlId="clearenceDescription">
                 <Form.Label>Clearance Description</Form.Label>
-                <Form.Control
-                  type="number"
-                  placeholder="Enter items"
-                  value={clearenceDescription}
+                <Form.Select
+                  aria-label="Default select example"
+                  value = {clearenceDescription}
                   onChange={(e) => setClearenceDescription(e.target.value)}
-                />
+                >
+                  <option>Select Clearance Type</option>
+                  <option value="1">Department Clearance</option>
+                  <option value="2">Library Clearance
+                  </option>
+                  <option value="3">Hostal Clearance   
+                  </option>
+                  <option value="4">Sports Clearance
+                  </option>
+                  <option value="5">
+                    financial Aid Clearance
+                  </option>
+                </Form.Select>
+              </Form.Group>
+              <Form.Group className="mb-3" controlId="status">
+                <Form.Label>Status</Form.Label>
+                <Form.Select
+                  aria-label="Default select example"
+                  value = {status}
+                  onChange={(e) => setStatus(e.target.value)}
+                >
+                  <option>Select paid or not</option>
+                  <option value="1">Paid</option>
+                  <option value="2">Pending
+                  </option>
+                </Form.Select>
               </Form.Group>
               <Form.Group className="mb-3" controlId="totalAmount">
                 <Form.Label> Clearance Amount </Form.Label>
-                <Form.Control
-                  type="number"
-                  placeholder="Enter Total"
-                  value={totalAmount}
-                  onChange={(e) => setTotalAmount(e.target.value)}
-                />
-              </Form.Group>
+                 <Form.Control
+                      type="text"
+                      placeholder="Enter Total"
+                      value={totalAmount !== '' && !isNaN(totalAmount) ? `Rs ${parseFloat(totalAmount).toFixed(2)}` : ''} // Format the value as currency only if it's a valid number
+                      onChange={(e) => {
+                      // Remove non-numeric characters and set the totalAmount state
+                      const input = e.target.value.replace(/[^\d.]/g, '');
+                      setTotalAmount(input);
+                      }}
+                      />
+                  </Form.Group>
+
 
               
 
@@ -116,10 +148,18 @@ function AddClearance() {
           </Container>
         </Modal.Body>
         <Modal.Footer>
-          
-          <Button variant="primary" type="submit" onClick={handleClose} style={{  color: '#333', margin: '0 190px', fontFamily:"times new roman" }}>
-            ADD
-          </Button>
+        <Button
+            variant="primary"
+            type="submit"
+            onClick={handleSubmit}
+            style={{
+              color: "#333",
+              margin: "0 190px",
+              fontFamily: "times new roman",
+            }}
+          >
+            <b>ADD</b>
+        </Button>
         </Modal.Footer>
       </Modal>
     </div>

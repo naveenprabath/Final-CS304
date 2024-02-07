@@ -90,7 +90,7 @@ function Signup() {
         variant=""
         onClick={handleShow}
         style={{
-          fontFamily: "times new roman",
+          fontFamily: "Lora",
           color: "#B40505",
           textAlign: "center",
           fontWeight: 'bold',

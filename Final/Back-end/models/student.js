@@ -33,7 +33,7 @@ const studentSchema = new Schema({
   },
 }, { timestamps: true });
 
-// Hash passwords before saving
+
 studentSchema.pre("save", async function (next) {
   const student = this;
   if (studentSchema.isModified("password")) {
@@ -42,7 +42,6 @@ studentSchema.pre("save", async function (next) {
   next();
 });
 
-// Add passport-local-mongoose plugin for authentication
 studentSchema.plugin(passportLocalMongoose);
 
 const student = mongoose.model("student", studentSchema);

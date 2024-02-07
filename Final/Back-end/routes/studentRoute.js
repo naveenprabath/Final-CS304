@@ -41,7 +41,7 @@ router.route("/Signup").post(async (req, res) => {
   }
 });
 
-// Login route (already using Passport, no changes needed)
+
 router.post(
   "/login",
   passport.authenticate("local", { session: false }),

@@ -30,7 +30,7 @@ router.get("/", (req, res) => {
 })*/
 //Signup...............................................................
 router.route("/ADDClearance").post((req, res) => {
-  const { studentName, studentId, email,  combination, clearenceDescription, totalAmount } =
+  const { studentName, studentId, email,  combination, clearenceDescription,status, totalAmount } =
     req.body;
 
   var newclearenceReport = {
@@ -39,6 +39,7 @@ router.route("/ADDClearance").post((req, res) => {
     email,
     combination, 
     clearenceDescription,
+    status,
     totalAmount,
   };
 

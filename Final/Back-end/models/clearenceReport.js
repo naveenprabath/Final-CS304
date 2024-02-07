@@ -30,8 +30,12 @@ const clearenceReportSchema = new Schema({
         type:String,
         required:true
     },
-    totalAmount:{
+    status :{
         type:String,
+        required:true
+    },
+    totalAmount:{
+        type:Number,
         required:true
     }
 

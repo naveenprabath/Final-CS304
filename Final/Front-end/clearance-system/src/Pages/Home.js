@@ -11,13 +11,8 @@ import Img2 from "../Images/Uop.png";
 import Img3 from "../Images/mapgym.PNG";
 
 function Home(){
-    const rowStyle = {
-        padding: "10px",
-      };
-      const pageStyles = {
-        backgroundColor: "white",
-        minHeight: "100vh",
-      };
+    
+     
 
       const cardStyle = {
         width: '300px',
@@ -27,6 +22,7 @@ function Home(){
         margin: '10px',
         borderRadius: '10px',
         boxShadow: '0 4px 8px rgba(0, 0, 0, 0.6)',
+        fontFamily: "Lora"
        
       };
 
@@ -144,23 +140,7 @@ return(
           <Row >
         
       
-        <Col md={6} style={{ alignItems: 'center' }}>
-          <Card style={transparentCardStyle}>
-            <Card.Body>
-              <Card.Title>About Us</Card.Title>
-              <Card.Text>xxxxx</Card.Text>
-            </Card.Body>
-          </Card>
-        </Col>
-
-        <Col md={6} style={{ alignItems: 'center' }}>
-          <Card style={transparentCardStyle}>
-            <Card.Body>
-              <Card.Title>About Us</Card.Title>
-              <Card.Text>xxxxx</Card.Text>
-            </Card.Body>
-          </Card>
-        </Col>
+        
         
 
         

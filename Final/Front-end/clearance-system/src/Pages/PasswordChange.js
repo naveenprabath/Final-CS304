@@ -1,59 +1,81 @@
-// PasswordChangeForm.js
+// PasswordChangeModal.js
 
 import React, { useState } from 'react';
-import Alert from 'react-bootstrap/Alert';
+import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import Form from 'react-bootstrap/Form';
+import Img1 from "../Images/logo.png";
 
-const PasswordChangeForm = () => {
-  const [showAlert, setShowAlert] = useState(false);
+const PasswordChangeModal = ({ showModal, handleClose }) => {
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [email, setEmail] = useState('');
 
   const handlePasswordChange = () => {
-    // Your password change logic goes here
-    // For demonstration purposes, we'll just show an alert
-    setShowAlert(true);
+    // Add logic to handle password change (e.g., send request to Node server)
+    // This is a placeholder function, replace it with your actual implementation
+    console.log('Password changed successfully!');
+    handleClose(); // Close the modal after password change
   };
 
   return (
-    <div style={{ maxWidth: '400px', margin: 'auto', marginTop: '50px' }}>
-      <h2>Password Change</h2>
+    <Modal show={showModal} onHide={handleClose}>
+      <Modal.Header closeButton>
+      <img
+              src={Img1}
+              alt="LOgo"
+              style={{ width: "60px", height: "60px" }}
+            />
+        <Modal.Title style={{
+                fontSize: "24px",
+                color: "#333",
+                margin: "0 100px",
+                fontFamily: "Lora",
+              }}>Password Change</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <Form>
+        <Form.Group controlId="email">
+            <Form.Label>Email</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Enter your Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </Form.Group>
 
-      {/* Display an alert when showAlert state is true */}
-      {showAlert && (
-        <Alert variant="success" onClose={() => setShowAlert(false)} dismissible>
-          Password changed successfully!
-        </Alert>
-      )}
+          <Form.Group controlId="formPassword">
+            <Form.Label>New Password</Form.Label>
+            <Form.Control
+              type="password"
+              placeholder="Enter your new password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </Form.Group>
 
-      {/* Password change form */}
-      <form>
-        <div className="mb-3">
-          <label htmlFor="currentPassword" className="form-label">
-            Current Password
-          </label>
-          <input type="password" className="form-control" id="currentPassword" required />
-        </div>
-
-        <div className="mb-3">
-          <label htmlFor="newPassword" className="form-label">
-            New Password
-          </label>
-          <input type="password" className="form-control" id="newPassword" required />
-        </div>
-
-        <div className="mb-3">
-          <label htmlFor="confirmPassword" className="form-label">
-            Confirm Password
-          </label>
-          <input type="password" className="form-control" id="confirmPassword" required />
-        </div>
-
-        <Button variant="primary" type="button" onClick={handlePasswordChange}>
-          Change Password
+          <Form.Group controlId="formConfirmPassword">
+            <Form.Label>Confirm Password</Form.Label>
+            <Form.Control
+              type="password"
+              placeholder="Confirm your new password"
+              value={confirmPassword}
+              onChange = {(e) => setConfirmPassword(e.target.value)}
+            />
+          </Form.Group>
+        </Form>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button variant="secondary" onClick={handleClose}>
+          Close
         </Button>
-      </form>
-    </div>
+        <Button variant="primary" onClick={handlePasswordChange}>
+          Save Changes
+        </Button>
+      </Modal.Footer>
+    </Modal>
   );
 };
 
-export default PasswordChangeForm;
+export default PasswordChangeModal;
