@@ -6,7 +6,7 @@
 
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-
+ 
 const clearenceReportSchema = new Schema({
     studentName:{
         type:String,

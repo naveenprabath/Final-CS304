@@ -7,7 +7,7 @@ import Cookies from "universal-cookie";
 import axios from "axios";
 
 const cookie = new Cookies();
-
+ 
 function LoginAlert() {
   const [show, setShow] = useState(false);
   const [email, setEmail] = useState("");

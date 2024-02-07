@@ -3,7 +3,7 @@ const validator = require("validator");
 const mongoose = require("mongoose");
 const passportLocalMongoose = require("passport-local-mongoose");
 const Schema = mongoose.Schema;
-
+ 
 const studentSchema = new Schema({
   fullName: {
     type: String,

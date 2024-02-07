@@ -3,7 +3,7 @@ const student = require("../models/student"); // Use const for constants
 const jwt = require("jwt-simple");
 const passport = require("passport");
 const studentController = require("../controllers/studentController");
-
+ 
 router.get("/", async (req, res) => {
   try {
     const students = await student.find();

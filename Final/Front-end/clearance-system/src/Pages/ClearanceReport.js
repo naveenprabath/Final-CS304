@@ -23,7 +23,7 @@ const ClearanceReport = () => {
       financialAidClearance: true,
       total :'Rs.530.00'
     };
-
+ 
     const reportElement = document.getElementById('clearanceReport');
     const reportHTML = `
       <div class="clearance-report">
