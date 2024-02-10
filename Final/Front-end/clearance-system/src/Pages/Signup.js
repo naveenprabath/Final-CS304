@@ -60,6 +60,25 @@ function Signup() {
   // };
 
   const handleSubmit = () => {
+
+    // Email validation regex pattern
+  const emailPattern = /^[a-zA-Z0-9._%+-]+@sci.pdn.ac.lk$/;
+  
+  // Student ID validation regex pattern
+  const studentIdPattern = /^s\d{5}$/;
+  
+  // Check if email matches the pattern
+  if (!emailPattern.test(email)) {
+    alert("Please enter a valid email ending with @sci.pdn.ac.lk");
+    return;
+  }
+
+  // Check if student ID matches the pattern
+  if (!studentIdPattern.test(studentId)) {
+    alert("Please enter a valid student ID in the format sXXXXX");
+    return;
+  }
+
     const axiosConfig = {
       method: "POST",
       url: `${BASE_URL}student/Signup`,
@@ -202,6 +221,7 @@ function Signup() {
           </Container>
         </Modal.Body>
         <Modal.Footer>
+          <a href="./Home">
           <Button
             variant="primary"
             type="submit"
@@ -214,6 +234,7 @@ function Signup() {
           >
             Sign Up
           </Button>
+          </a>
         </Modal.Footer>
       </Modal>
     </div>

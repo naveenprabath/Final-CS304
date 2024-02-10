@@ -9,6 +9,8 @@ import Container from "react-bootstrap/Container";
 import Login from "./Login";
 import Img2 from "../Images/Uop.png";
 import Img3 from "../Images/mapgym.PNG";
+import Complain from "./Complain";
+
 
 function Home(){
     
@@ -30,7 +32,7 @@ function Home(){
         backgroundImage: `url(${Img2})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        height: '143vh',
+        height: '100vh',
         position: 'relative',
       };
 
@@ -93,6 +95,11 @@ return(
                 <Card.Body>
                   <Card.Title><center>Clearance Notice</center></Card.Title>
                   <Card.Text><br/><center>If you have any problem you can complain or email us</center></Card.Text>
+                  <center>
+                <div className="p-2 ms-auto">
+                <Complain/>
+                </div>
+                </center>
                 </Card.Body>
               </Card>
             </Col>

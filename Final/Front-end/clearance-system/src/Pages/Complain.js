@@ -14,9 +14,11 @@ function Complain() {
   const [studentId, setStudentId] = useState("");
   const [fullName, setFullName] = useState("");
   const [combination, setCombination] = useState("");
-  const [complain, setComplain] = useState("");
+  const [description, setComplain] = useState("");
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [submitError, setSubmitError] = useState(null);
+
+  
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -28,7 +30,7 @@ function Complain() {
         studentId,
         fullName,
         combination,
-        complain,
+        description,
       },
     };
 
@@ -55,7 +57,12 @@ function Complain() {
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>Submit Complaint</Button>
+      <Button variant="" onClick={handleShow} style={{
+          fontFamily: "Lora",
+          color: "#B40505",
+          textAlign: "center",
+          fontWeight: 'bold',
+        }}>Student Complain</Button>
       <Modal show={show} onHide={handleClose} centered>
         <Modal.Header>
           <div style={{ display: 'flex', justifyContent: 'center' }}>
@@ -100,7 +107,7 @@ function Complain() {
               <Form.Control
                 as="textarea"
                 rows={3}
-                value={complain}
+                value={description}
                 onChange={(e) => setComplain(e.target.value)}
               />
             </Form.Group>

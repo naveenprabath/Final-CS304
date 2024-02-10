@@ -20,6 +20,10 @@ import Accommodation from './Pages/Accommodation';
 import AccountRenew from './Pages/AccountRenew';
 import PasswordChange from './Pages/PasswordChange';
 import IssueForm from './Pages/IssueForm';
+import SlipManagement from './Pages/SlipManagement';
+import ComplainView from './Pages/ComplainView';
+import ClearanceView from "./Pages/ClearanceView";
+import PaymentView from "./Pages/PaymentView";
 
 
 function App(){
@@ -33,8 +37,7 @@ function App(){
         <Route exact path='/Dashboard' element={<Dashboard/>} />
         <Route exact path='/RequestAccount' element={<RequestAccount/>}/>
 
-        <Route  path='/Login'
-         element={<Login/>} />
+        <Route  path='/Login'          element={<Login/>} />
         <Route exact path='/Signup' element={<Signup/>} />
         <Route exact path='/AccademiStaffSignup' element={<AccademiStaffSignup/>} />
         <Route exact path='/NonAccademiStaffSignup' element={<NonAccademiStaffSignup/>} />
@@ -49,6 +52,10 @@ function App(){
         <Route exact path='/AccountRenew' element={ <AccountRenew/>} />
         <Route exact path='/PasswordChange' element={ <PasswordChange/>} />
         <Route exact path='/IssueForm' element={ <IssueForm/>} />
+        <Route exact path='/SlipManagement' element={ <SlipManagement/>} />
+        <Route exact path='/ComplainView' element={ <ComplainView/>} />
+        <Route exact path='/ClearanceView' element={ <ClearanceView/>} />
+        <Route exact path='/PaymentView' element={ <PaymentView/>} />
         
         
         

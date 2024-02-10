@@ -1,54 +1,123 @@
 const router = require("express").Router();
-let clearenceReport = require("../models/clearenceReport");
+const clearenceReport = require("../models/clearenceReport");
 
 router.get("/", (req, res) => {
   clearenceReport
     .find()
-    .then((clearenceReport) => res.json(clearenceReport))
-    .catch((err) => res.status(400).json("Error:" + err));
+    .then((clearenceReports) => res.json(clearenceReports))
+    .catch((err) => res.status(400).json({ error: err.message }));
 });
- 
 
-
-
-// //Create a new students
-// router.post('/pages',(req,res)=>{
-//     const {fullName,studentId,email,contactNumber,combination,password}=req.body;
-//     const newStudent = {fullName:fullName,studentId:studentId,email:email,contactNumber:contactNumber,combination:combination,password:password};
-//     newStudent.save;
-//     res.status(201).json(newStudent);
-// });
-
-//User login
-/*router.post('/pages/login',(req,res)=>{
-    const {email,password} = req.body
-    const student = studnets.find((u)=>u.email === email);
-    if(!student ||studnet.password!==password){
-        return res.status(401).json({error:'Invalid email or password'});
-    }
-    res.status(200).json({message:'Login sucessful',user});
-})*/
-//Signup...............................................................
 router.route("/ADDClearance").post((req, res) => {
-  const { studentName, studentId, email,  combination, clearenceDescription,status, totalAmount } =
-    req.body;
+  const { studentName, studentId, email, combination, clearenceDescription, status, totalAmount } = req.body;
 
-  var newclearenceReport = {
+  const newclearenceReport = {
     studentName,
     studentId,
     email,
-    combination, 
+    combination,
     clearenceDescription,
     status,
     totalAmount,
   };
 
-  console.log(newclearenceReport)
-
   clearenceReport
     .create(newclearenceReport)
-    .then(() => res.json("Clearene report added"))
-    .catch((err) => res.status(400).json("Error:" + err));
+    .then(() => res.json("Clearance report added"))
+    .catch((err) => res.status(400).json({ error: err.message }));
+});
+
+router.get('/clearanceSummary/:email', async (req, res) => {
+  const email = req.params.email;
+  try {
+    const summary = await clearenceReport.aggregate([
+      { $match: { email: email } },
+      {
+        $group: {
+          _id: null,
+          studentName: { $first: '$studentName' },
+          studentId: { $first: '$studentId' },
+          email: { $first: '$email' },
+          combination: { $first: '$combination' },
+          departmentClearance: {
+            $max: {
+              $cond: [
+                { $eq: ['$status', '1'] },
+                { $cond: [{ $eq: ['$clearenceDescription', '1'] }, "Paid", "Pending"] },
+                "Pending"
+              ]
+            }
+          },
+          libraryClearance: {
+            $max: {
+              $cond: [
+                { $eq: ['$status', '1'] },
+                { $cond: [{ $eq: ['$clearenceDescription', '2'] }, "Paid", "Pending"] },
+                "Pending"
+              ]
+            }
+          },
+          hostalClearance: {
+            $max: {
+              $cond: [
+                { $eq: ['$status', '1'] },
+                { $cond: [{ $eq: ['$clearenceDescription', '3'] }, "Paid", "Pending"] },
+                "Pending"
+              ]
+            }
+          },
+          sportsClearance: {
+            $max: {
+              $cond: [
+                { $eq: ['$status', '1'] },
+                { $cond: [{ $eq: ['$clearenceDescription', '4'] }, "Paid", "Pending"] },
+                "Pending"
+              ]
+            }
+          },
+          financialAidClearance: {
+            $max: {
+              $cond: [
+                { $eq: ['$status', '1'] },
+                { $cond: [{ $eq: ['$clearenceDescription', '5'] }, "Paid", "Pending"] },
+                "Pending"
+              ]
+            }
+          },
+          total: { $sum: { $cond: [{ $eq: ['$status', '2'] }, '$totalAmount', 0] }}
+        }
+      }
+    ]);
+    res.json(summary);
+  } catch (error) {
+    console.error('Error fetching clearance summary:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+router.get("/search", (req, res) => {
+  const { studentId, description } = req.query;
+
+  const query = {
+    studentId: { $regex: new RegExp(studentId, 'i') },
+    clearenceDescription: { $regex: new RegExp(description, 'i') }
+  };
+
+  clearenceReport.find(query)
+    .then((clearenceReport) => res.json(clearenceReport))
+    .catch((err) => res.status(400).json({ error: err.message }));
+});
+
+router.delete('/:id', async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    await clearenceReport.findByIdAndDelete(id);
+    res.json({ message: 'Clearance report deleted successfully' });
+  } catch (error) {
+    console.error('Error deleting clearance report:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
 });
 
 module.exports = router;

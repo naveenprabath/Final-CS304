@@ -128,7 +128,9 @@ function StaffDashBoard(){
                         
                         
                       </Card.Text>
+                      <a href="ClearanceView">
                       <Button variant="" style={{color:"#B40505", fontWeight: 'bold'}}>View</Button>
+                      </a>
                       
                     </Card.Body>
                   </Card>
@@ -142,7 +144,9 @@ function StaffDashBoard(){
                         <FontAwesomeIcon icon={faSignInAlt} style={{ fontSize: 50 }} />
                        
                       </Card.Text>
+                      <a href="ComplainView">
                       <Button variant="" style={{color:"#B40505", fontWeight: 'bold'}}>Complain</Button>
+                      </a>
                     </Card.Body>
                   </Card>
                 </Col>
@@ -160,32 +164,37 @@ function StaffDashBoard(){
                       </Card.Text>
                      
                     </Card.Body>
+                    <center>
+                    <a href="/AccountRenew">
                     <Button variant="" style={{color:"#B40505", fontWeight: 'bold'}}>Renew</Button>
+                    </a>
+                    </center>
                   </Card>
                 </Col>
                 <Col md={4} className="className=d-flex align-items-center justify-content-center p-1">
                   <Card style={cardStyle}>
                     <Card.Body className="text-center">
-                      <Card.Title></Card.Title>
-                      
+                      <Card.Title>Request Account</Card.Title>
+                    
                       <Card.Text>
-                      
+                        <FontAwesomeIcon icon={faUserPlus} style={{ fontSize: 60 }} />
                       </Card.Text>
-                      
-                     
-                      
+                      <a href="/RequestAccount">
+                        <Button variant="" style={{color:"#B40505", fontWeight: 'bold'}}>Click Me</Button>
+                      </a>
                     </Card.Body>
                   </Card>
                 </Col>
                 <Col md={4} className="className=d-flex align-items-center justify-content-center p-1">
                   <Card style={cardStyle}>
                     <Card.Body className="text-center">
-                      <Card.Title>Admin Support</Card.Title>
+                      <Card.Title>Student Payment</Card.Title>
                       
                       <Card.Text>
                         <FontAwesomeIcon icon={faHeadset} style={{ fontSize: 50 }} />
                       </Card.Text>
-                      <Button variant="" style={{color:"#B40505"}}><b>Support</b></Button>
+                      <a href="PaymentView">
+                      <Button variant="" style={{color:"#B40505"}}><b>View</b></Button></a>
                     </Card.Body>
                   </Card>
                 </Col>

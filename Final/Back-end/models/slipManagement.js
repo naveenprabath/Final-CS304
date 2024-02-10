@@ -8,32 +8,30 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const slipManagementSchema = new Schema({
-    fullName:{
+    bankName:{
         type:String,
         required:true
     },
-    studentId:{
+    idNumber:{
         type:String,
         required:true
     },
-    email:{
+    slipId:{
         type:String,
         //unique:true,
         required:true
        // validate:[isEmail,'invalid email']
     },
-    contactNumber:{
+    amount:{
         type:String,
         required:true
     },
-    combination:{
-        type:String,
-        required:true
+    slipFile: {
+        data: Buffer,
+        contentType: String,
+        filename: String,
+        //required:false
     },
-    password:{
-        type:String,
-        required:true
-    }
 },
 {timestamps: true ,
 })

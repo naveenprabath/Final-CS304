@@ -15,6 +15,8 @@ import Signup from "./Signup";
 import Img2 from "../Images/Dashboard2.png";
 import Img1 from "../Images/logo.png";
 import AccountRenew from "./AccountRenew";
+import SlipManagement from "./SlipManagement";
+import Complain from "./Complain";
 
 function Dashboard(){
     
@@ -64,9 +66,9 @@ function Dashboard(){
           <Form className="d-flex">
             <FormControl type="text" placeholder="Search" className="mr-2" style={{ marginRight: '5px',   className: "d-flex",   borderRadius: '15px',}} />
             <div className="mx-1"></div>
-            <Button variant="" size="sm" style={{color:"#B40505",}}><b><h6>Search</h6></b></Button>
+            <Button variant="" size="sm" style={{color:"#B40505",}}><b>Search</b></Button>
           </Form>
-          <Button variant=""  className="mx-1" size="sm" style={{color:"black" }}>  <div className="p-2 ms-auto">
+          <Button variant=""  className="" size="sm" style={{color:"black" }}>  <div className="p-2 ms-auto">
                         <Login />
                       </div>    </Button>
           <Button variant="" className="mx-1" size="sm" style={{color:"black"}}> <div className="p-2 ms-auto">
@@ -150,21 +152,23 @@ function Dashboard(){
                       <Card.Text>
                         <FontAwesomeIcon icon={faCreditCard} style={{ fontSize: 60 }} />
                       </Card.Text>
-                      <a href="#">
-                      <Button variant="" style={{color:"#B40505", fontWeight: 'bold'}} > Click Me</Button>
-                      </a>
+                      <div className="p-2 ms-auto">
+                        <SlipManagement />
+                      </div>
                     </Card.Body>
                   </Card>
                 </Col>
                 <Col >
                   <Card style={cardStyle}>
                     <Card.Body className="text-center">
-                      <Card.Title>Admin Support</Card.Title>
+                      <Card.Title>Student Complain</Card.Title>
                       
                       <Card.Text>
                         <FontAwesomeIcon icon={faHeadset} style={{ fontSize: 60 }} />
                       </Card.Text>
-                      <Button variant="" style={{color:"#B40505", fontWeight: 'bold'}}>Click Me</Button>
+                      <div className="p-2 ms-auto">
+                        <Complain />
+                      </div>
                     </Card.Body>
                   </Card>
                 </Col>

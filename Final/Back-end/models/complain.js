@@ -23,7 +23,7 @@ const complainSchema = new Schema({
         required:true
        // validate:[isEmail,'invalid email']
     },
-    complain:{
+    description:{
         type:String,
         required:true
     }

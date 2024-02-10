@@ -4,6 +4,8 @@ import Img2 from "../Images/gym3.png";
 import { Button } from 'react-bootstrap';
 import Login from "../Pages/Login";
 import Img3 from "../Images/mapgym.PNG";
+import Complain from './Complain';
+import SlipManagement from './SlipManagement';
 
 const GymCenterPage = () => {
   const [darkMode, setDarkMode] = useState(false);
@@ -115,8 +117,12 @@ const GymCenterPage = () => {
           <div style={{ fontFamily: "times new roman", color: "#FFC53A", textAlign: "center" }}> 
             <Login/>
           </div></div>
-          <div style={cardStyle}><h3><center>Notice</center> </h3> <br/> <h5><center>2024 General convercation will held on 2024 May 08 </center></h5></div>
-          <div style={cardStyle}><h3><center>Notice</center></h3><br/><h5><center>Settle the Clearance before the 2024 Aprial 10</center></h5></div>
+          <div style={cardStyle}><h3><center>Student Complain</center> </h3> <br/> <center><div className="p-2 ms-auto">
+                        <Complain />
+                      </div></center> </div>
+          <div style={cardStyle}><h3><center>Payment</center></h3><br/><center><div className="p-2 ms-auto">
+                        <SlipManagement />
+                      </div></center></div>
         </div>
 
         <div style={noticeBoardStyle}>

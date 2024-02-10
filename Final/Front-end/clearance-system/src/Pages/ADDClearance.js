@@ -10,6 +10,7 @@ import BASE_URL from "../config/apiConfig";
 
 function AddClearance() {
     const [show, setShow] = useState(false);
+    const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -23,6 +24,26 @@ function AddClearance() {
   const [totalAmount, setTotalAmount] = useState("");
 
   const handleSubmit = () => {
+    setShowSuccessMessage(true);
+
+    
+    // Email validation regex pattern
+  const emailPattern = /^[a-zA-Z0-9._%+-]+@sci.pdn.ac.lk$/;
+  
+  // Student ID validation regex pattern
+  const studentIdPattern = /^s\d{5}$/;
+  
+  // Check if email matches the pattern
+  if (!emailPattern.test(email)) {
+    alert("Please enter a valid email ending with @sci.pdn.ac.lk");
+    return;
+  }
+
+  // Check if student ID matches the pattern
+  if (!studentIdPattern.test(studentId)) {
+    alert("Please enter a valid student ID in the format sXXXXX");
+    return;
+  }
     const axiosConfig = {
       method: "POST",
       url: `${BASE_URL}clearenceReport/ADDClearance`,
@@ -152,17 +173,34 @@ function AddClearance() {
             variant="primary"
             type="submit"
             onClick={handleSubmit}
+          
             style={{
               color: "#333",
               margin: "0 190px",
-              fontFamily: "times new roman",
+              fontFamily: "Lora",
             }}
           >
             <b>ADD</b>
         </Button>
         </Modal.Footer>
+        {showSuccessMessage && (
+        <div className="alert alert-success" role="alert">
+          Successfully added the clearance.
+          <Button variant="primary" onClick={handleClose} style={{
+              color: "#333",
+              margin: "10px 0",
+              fontFamily: "Lora",
+            }}>
+              Close
+            </Button>
+          
+        </div>
+      )}
       </Modal>
+      
+      
     </div>
+    
   );
 
 }

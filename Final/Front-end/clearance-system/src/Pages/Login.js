@@ -27,7 +27,13 @@ function LoginAlert() {
 
   const handleLogin = async () => {
     // e.preventDefault();
-
+       // Email validation regex pattern
+     const emailPattern = /^[a-zA-Z0-9._%+-]+@sci.pdn.ac.lk$/;
+      // Check if email matches the pattern
+     if (!emailPattern.test(email)) {
+        alert("Please enter a valid email ending with @sci.pdn.ac.lk");
+     return;
+  }
     try {
       const response = await axios.post("http://localhost:5000/student/login", {
         email: email,
@@ -76,7 +82,7 @@ function LoginAlert() {
         LogIn
       </Button>
 
-      <Modal show={show} onHide={handleClose} centered>
+      <Modal show={show} onHide={handleClose}  centered>
         <Modal.Header>
           <div style={{ display: "flex", justifyContent: "center" }}>
             <img
@@ -122,13 +128,13 @@ function LoginAlert() {
             </Form.Group>
           </Modal.Body>
           <Modal.Footer>
-            {/* <a href="./ClearanceReport"> */}
+              
               <Button
                 variant="primary"
                 type="close"
                 style={{
                   color: "#333",
-                  margin: "0 200px",
+                  margin: "0 180px",
                   fontFamily: "Lora",
                 }}
                 onClick={(e) => {
@@ -140,7 +146,8 @@ function LoginAlert() {
               >
                 LOGIN
               </Button>
-            {/* </a> */}
+              
+            
           </Modal.Footer>
         </Form>
       </Modal>

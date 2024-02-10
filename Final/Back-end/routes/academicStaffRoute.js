@@ -7,8 +7,8 @@ const academicStaffController = require("../controllers/academicStaffController"
 
 router.get("/", async (req, res) => {
   try {
-    const academicStaff1 = await academicStaff.find();
-    res.json(academicStaff1);
+    const academicStaffs = await academicStaff.find();
+    res.json(academicStaffs);
   } catch (error) {
     res.status(400).json({ error: "Error retrieving students" });
   }
@@ -27,7 +27,7 @@ router.get("/", async (req, res) => {
     res.status(200).json({message:'Login sucessful',user});
 })*/
 
-router.route("/AccademiStaffSignup").post(async(req, res) => {
+router.route("/AcademicStaffSignup").post(async(req, res) => {
   try{
 
   const { 
@@ -47,7 +47,7 @@ router.route("/AccademiStaffSignup").post(async(req, res) => {
   });
 
   await newAcademicStaff.save();
-  res.json("User added");
+  res.json("Staff added");
 } catch (error) {
   res.status(400).json({ error: "Error creating user" });
 }

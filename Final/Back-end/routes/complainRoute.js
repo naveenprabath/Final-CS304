@@ -35,22 +35,34 @@ router.route("/Complain").post((req, res) => {
   // const password=req.body.password;
   // const newStudent = new studentModel({fullName,studentId,email,contactNumber,combination,password});
 
-  const {studentId, fullName, combination, complain } =
+  const {studentId, fullName, combination, description } =
     req.body;
 
   var newComplain = {
     studentId,
     fullName,
     combination,
-    complain,
+    description
   };
 
   console.log(newComplain)
 
   complain
     .create(newComplain)
-    .then(() => res.json("User added"))
+    .then(() => res.json("Complain added"))
     .catch((err) => res.status(400).json("Error:" + err));
+});
+
+router.delete('/:id', async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    await complain.findByIdAndDelete(id);
+    res.json({ message: 'Complain deleted successfully' });
+  } catch (error) {
+    console.error('Error deleting clearance report:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
 });
 
 module.exports = router;

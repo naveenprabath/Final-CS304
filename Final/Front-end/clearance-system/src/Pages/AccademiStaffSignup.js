@@ -11,7 +11,7 @@ import BASE_URL from "../config/apiConfig";
 
 
 
-function AccademiStaffSignup() {
+function AcademicStaffSignup() {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -27,7 +27,7 @@ function AccademiStaffSignup() {
   const handleSubmit = () => {
     const axiosConfig = {
       method: "POST",
-      url: `${BASE_URL}academicStaff/AccademiStaffSignup`,
+      url: `${BASE_URL}academicStaff/AcademicStaffSignup`,
       data: {
         fullName,
         address,
@@ -121,7 +121,7 @@ function AccademiStaffSignup() {
             Close
           </Button>
           <Button variant="primary" type="submit" onClick={handleSubmit}>
-          <Nav.Link href="/StaffDashBoard" className="nav-link" style={{ fontFamily: "times new roman", color: "#FFC53A", textAlign: "center" }}>
+          <Nav.Link href="/RequestAccount" className="nav-link" style={{ fontFamily: "times new roman", color: "#FFC53A", textAlign: "center" }}>
            Signup
           </Nav.Link>
           </Button>
@@ -131,4 +131,4 @@ function AccademiStaffSignup() {
   );
 }
 
-export default AccademiStaffSignup;
+export default AcademicStaffSignup;

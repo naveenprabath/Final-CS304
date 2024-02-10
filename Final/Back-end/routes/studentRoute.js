@@ -13,6 +13,8 @@ router.get("/", async (req, res) => {
   }
 });
 
+
+
 // Signup route (corrected)
 router.route("/Signup").post(async (req, res) => {
   try {
@@ -24,6 +26,15 @@ router.route("/Signup").post(async (req, res) => {
       combination,
       password,
     } = req.body;
+
+    if (!email.endsWith("@sci.pdn.ac.lk")) {
+      return res.status(400).json({ error: "Invalid email format" });
+    }
+
+    // Validate student ID format
+    if (!/^s\d{5}$/i.test(studentId)) {
+      return res.status(400).json({ error: "Invalid student ID format" });
+    }
 
     const newStudent = new student({
       fullName,
@@ -47,5 +58,8 @@ router.post(
   passport.authenticate("local", { session: false }),
   studentController.login
 );
+ 
+
+ 
 
 module.exports = router;

@@ -35,12 +35,12 @@ router.route("/SlipManagement").post((req, res) => {
   // const password=req.body.password;
   // const newStudent = new studentModel({fullName,studentId,email,contactNumber,combination,password});
 
-  const { studentId, bankName, slipId, amount, slipFile} =
+  const { bankName,idNumber, slipId, amount, slipFile} =
     req.body;
 
   var newSlipManagement = {
-    studentId,
     bankName,
+    idNumber,
     slipId,
     amount,
     slipFile,
@@ -50,7 +50,7 @@ router.route("/SlipManagement").post((req, res) => {
 
   slipManagement
     .create(newSlipManagement)
-    .then(() => res.json("User added"))
+    .then(() => res.json("Payment added"))
     .catch((err) => res.status(400).json("Error:" + err));
 });
 
